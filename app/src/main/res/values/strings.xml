@@ -1,4 +1,5 @@
 <resources>
+
     <string name="app_name">mvvm</string>
     <string name="laki">Laki-laki</string>
     <string name="wanita">Perempuan</string>
@@ -8,6 +9,5 @@
     <string name="alamat">Alamat</string>
     <string name="gender">Jenis Kelamin</string>
     <string name="detail">Data Siswa</string>
-
 
 </resources>
