@@ -39,4 +39,10 @@ fun DetailMahasiswaView(
                 judulParam = items.first,
                 isiParam = items.second
             )
+        }
+        Button(onClick = {onClickButton()}) {
+            Text(text = "Kembali")
+        }
+    }
+}
 
