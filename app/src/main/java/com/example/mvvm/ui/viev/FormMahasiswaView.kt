@@ -38,8 +38,78 @@ fun FormMahasiswaView(
     var noHP by remember { mutableStateOf("") }
     var selectedGender by rememberSaveable { mutableStateOf("") }
 
-    val dataMahasiswa: MutableList<String> =
-        mutableListOf(name, nim, selectedGender, email, alamat, noHP)
+    val dataMahasiswa: MutableList<String> = mutableListOf(name, nim, selectedGender, email, alamat, noHP)
 
 
+    Column (Modifier.fillMaxSize().padding(16.dp)
+        , horizontalAlignment = Alignment.CenterHorizontally){
+
+        Text("Data Formulir",
+            fontSize = 35.sp,
+            fontWeight = FontWeight.Bold)
+
+        Spacer(Modifier.padding(16.dp))
+
+        OutlinedTextField(
+            value = name,
+            onValueChange = {name = it},
+            placeholder = { Text("Masukkan nama")},
+            label = {Text("Nama")},
+            modifier = Modifier.fillMaxWidth().padding(5.dp)
+        )
+
+        OutlinedTextField(
+            value = nim,
+            onValueChange = {nim = it},
+            placeholder = { Text("Masukkan NIM")},
+            label = {Text("NIM")},
+            modifier = Modifier.fillMaxWidth().padding(5.dp)
+        )
+
+        Row {
+            listJK.forEach { item ->
+                Row (verticalAlignment = Alignment.CenterVertically){
+                    RadioButton(selected = selectedGender == item,
+                        onClick = {
+                            selectedGender = item
+                        }
+                    )
+                    Text(item)
+                }
+            }
+        }
+
+        OutlinedTextField(
+            value = email,
+            onValueChange = {email = it},
+            placeholder = { Text("Masukkan email")},
+            label = {Text("Email")},
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
+            modifier = Modifier.fillMaxWidth().padding(5.dp)
+        )
+
+        OutlinedTextField(
+            value = alamat,
+            onValueChange = {alamat = it},
+            placeholder = { Text("Masukkan alamat")},
+            label = {Text("Alamat")},
+            modifier = Modifier.fillMaxWidth().padding(5.dp)
+        )
+
+        OutlinedTextField(
+            value = noHP,
+            onValueChange = {noHP = it},
+            placeholder = { Text("Masukkan No Handphone")},
+            label = {Text("No HP")},
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+            modifier = Modifier.fillMaxWidth().padding(5.dp)
+        )
+
+        Button(onClick = { onSubmitClicked(dataMahasiswa) })
+        {
+            Text("Simpan")
+
+        }
+
+    }
 }
