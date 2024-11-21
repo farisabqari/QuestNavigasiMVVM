@@ -38,12 +38,20 @@ fun PengelolaanHalaman(
             composable(route = Halaman.Formulir.name) {
                 val konteks = LocalContext.current
                 FormMahasiswaView(
-                    listJK = DataKelamin.listJK.map { isi ->
-                        konteks.resources.getString(isi)
+                    listJK = DataKelamin.listJK.map {
+                            isi -> konteks.resources.getString(isi)
                     },
                     onSubmitClicked = {
                         viewModel.saveDataMahasiswa(it)
                         navHost.navigate(Halaman.Detail.name)
+                    }
+                )
+            }
+            composable(route = Halaman.Detail.name){
+                DetailMahasiswaView(
+                    uiStateMahasiswa = uiState,
+                    onClickButton = {
+                        navHost.popBackStack()
                     }
                 )
             }
